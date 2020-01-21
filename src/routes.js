@@ -8,9 +8,16 @@ const Routes = createAppContainer(
     createStackNavigator({
         Home: {
             screen: HomePage,
+            navigationOptions: {
+                headerShown: false
+            }
         },
         Recipes: {
             screen: Recipes
+        }
+    }, {
+        defaultNavigationOptions: {
+
         }
     })
 )

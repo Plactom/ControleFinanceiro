@@ -6,7 +6,17 @@ import TopContainerStyle from '../../components/TopContainer/styles'
 import DataContainer from '../../components/DataContainer/index'
 import DataContainerStyle from '../../components/DataContainer/styles'
 import FooterContainer from '../../components/FooterContainer/index'
-import { DashboardContainer, CurrentBalanceTitle, CurrentBalance, TrendingButtonContainer, TrendingUpIcon, TrendingTitle } from './styles'
+import { MaterialIcons } from '@expo/vector-icons'
+import { 
+  DashboardContainer, 
+  CurrentBalanceTitle, 
+  CurrentBalance, 
+  TrendingUpButton, 
+  TrendingIcon, 
+  TrendingTitle,
+  TrendingContainer, 
+  TrendingDownButton
+} from './styles'
 
 
 
@@ -20,10 +30,24 @@ export default function Home({ navigation }) {
         <CurrentBalanceTitle>Saldo</CurrentBalanceTitle>
         <CurrentBalance>R$1000</CurrentBalance>
 
-        <TrendingButtonContainer title="" >
-          <TrendingUpIcon color="#02a229"/>
-          <TrendingTitle>Receitas</TrendingTitle>
-        </TrendingButtonContainer>
+        <TrendingContainer>
+          <TrendingUpButton onPress={ () => {
+            navigation.navigate('Recipes')
+          }}>
+            <TrendingIcon color="#02a229">
+              <MaterialIcons name="keyboard-arrow-up" size={25}/>
+            </TrendingIcon>
+            <TrendingTitle>Receitas</TrendingTitle>
+          </TrendingUpButton>
+
+          <TrendingDownButton>
+            <TrendingIcon color="tomato">
+              <MaterialIcons name="keyboard-arrow-down" size={25}/>
+            </TrendingIcon>
+            <TrendingTitle>Despesas</TrendingTitle>
+          </TrendingDownButton>
+        </TrendingContainer>
+
       </DashboardContainer>
       <TopContainer style={ TopContainerStyle.companyNameContainer } />
       <FooterContainer />

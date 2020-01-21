@@ -19,22 +19,40 @@ export const CurrentBalance = styled.Text`
     font-size: 35;
 `
 
-export const TrendingButtonContainer = styled.Button`
-    position: absolute;
-    top: 50;
-    left: 10;
+export const TrendingContainer = styled.View`
+    width: 100%;
+    height: 70%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+`
+
+export const TrendingUpButton = styled.TouchableOpacity`
     flex-direction: row;
     width: 50%;
     height: 30%;
     align-items: center;
+    margin-top: 40;
+    justify-content: center;
 `
 
-export const TrendingUpIcon = styled.Image`
+export const TrendingDownButton = styled.TouchableOpacity`
+    flex-direction: row;
+    width: 50%;
+    height: 30%;
+    align-items: center;
+    margin-top: 40;
+    justify-content: center;
+`
+
+export const TrendingIcon = styled.View`
     position: relative;
     border-radius: 100;
     width: 40;
     height: 40;
     background-color: ${props => props.color};
+    justify-content: center;
+    align-items: center;
 `
 
 export const TrendingTitle = styled.Text`
@@ -42,4 +60,5 @@ export const TrendingTitle = styled.Text`
     font-size: 15;
     font-weight: bold;
     color: #37474F;
+    padding-left: 10;
 `
