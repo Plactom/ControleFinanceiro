@@ -3,7 +3,7 @@ import { RecipeContainer, RecipeValueContainer } from './styles'
 import { Text, View } from 'react-native'
 import AddButton from '../../components/AddButton/index'
 
-export default function Recipes() {
+export default function Recipes({ navigation }) {
     return(
         <>
             <RecipeContainer>
