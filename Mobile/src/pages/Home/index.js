@@ -22,7 +22,6 @@ import {
 
 export default function Home({ navigation }) {
   return(
-    <>
     <View style={ styles.mainContainer }>
       <DataContainer style={ DataContainerStyle.dataContainer } />
       <DashboardContainer>
@@ -47,12 +46,14 @@ export default function Home({ navigation }) {
             <TrendingTitle>Despesas</TrendingTitle>
           </TrendingDownButton>
         </TrendingContainer>
-
+        
+        <View>
+          <MaterialIcons name="keyboard-arrow-down" size={20}/>
+        </View>
       </DashboardContainer>
       <TopContainer style={ TopContainerStyle.companyNameContainer } />
       <FooterContainer />
     </View>
-    </>
   )
 }
 
