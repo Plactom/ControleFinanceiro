@@ -21,6 +21,9 @@ const Routes = createAppContainer(
         },
         AddRecipe: {
             screen: AddRecipe,
+            navigationOptions: {
+                title: 'Nova Receita'
+            }
         }
     }, {
         defaultNavigationOptions: {

@@ -35,7 +35,7 @@ export default function Recipes({ navigation }) {
             </RecipeContainer>
 
             <View style={{ right: 20, bottom: 20, position: "absolute" }} >
-                <AddButton/>
+                <AddButton navigate={ () => { navigation.navigate('AddRecipe') }} />
             </View>
         </>
     )
