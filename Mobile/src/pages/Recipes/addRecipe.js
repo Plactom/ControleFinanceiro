@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, KeyboardAvoidingView } from 'react-native'
 import CustomTextInput from '../../components/CustomTextInput/index'
 import {StyledInput} from '../../components/CustomTextInput/styles'
 import SubmitButton from '../../components/SubmitButton/index'
 import { IncomeAmountContainer } from './styles'
 import { MaterialIcons } from '@expo/vector-icons'
+import currencyFormatter from 'currency-formatter'
 
 export default function AddRecipe() {
     const [value, setValue] = useState('0.00')
 
     return(
-        <>
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior = "padding">
             <IncomeAmountContainer>
                 <Text style={{ marginTop: 10 }} >Valor da Receita</Text>
-                <Text style={{ fontSize: 25 }} > {`R$${value}`} </Text>
+                <Text style={{ fontSize: 25 }} > {`${currencyFormatter.format(Number(value), { locale: 'pt-BR' })}`} </Text>
             </IncomeAmountContainer>
 
 
@@ -35,15 +36,15 @@ export default function AddRecipe() {
                 </View>
             </View>
 
-
             <View style={{ 
                 width: '100%', 
-                position: "absolute", 
-                bottom: 100, 
-                alignItems: 'center' 
+                flex: 1,
+                justifyContent: 'flex-end',
+                marginBottom: 100,
+                alignItems: 'center',
             }} >
                 <SubmitButton/>
             </View>
-        </>
+        </KeyboardAvoidingView>
     )
 }
