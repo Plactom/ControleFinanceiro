@@ -1,9 +1,8 @@
 const Router = require('express')
+const RecipesController = require('./controllers/RecipesController')
 
 const routes = Router()
 
-routes.get('/balance', (req, res) => {
-    return res.send('Olá')
-})
+routes.post('/addrecipe', RecipesController.store)
 
 module.exports = routes
