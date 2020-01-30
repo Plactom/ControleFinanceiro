@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
 import { Text, View, KeyboardAvoidingView } from 'react-native'
-import CustomTextInput from '../../components/CustomTextInput/index'
 import {StyledInput} from '../../components/CustomTextInput/styles'
-import SubmitButton from '../../components/SubmitButton/index'
+import { SubmitButton } from '../../components/SubmitButton/styles'
 import { IncomeAmountContainer } from './styles'
 import { MaterialIcons } from '@expo/vector-icons'
 import currencyFormatter from 'currency-formatter'
 
+import api from '../../services/api'
+
 export default function AddRecipe() {
-    const [value, setValue] = useState('0.00')
+    const [description, setDescription] = useState('')
+    const [value, setValue] = useState()
+
+    async function addNewRecipe() {
+        const post = await api.post('./addrecipe', {
+            description,
+            value
+        })
+    }
 
     return(
         <KeyboardAvoidingView style={{ flex: 1 }} behavior = "padding">
@@ -23,7 +32,9 @@ export default function AddRecipe() {
                     <View style={{ marginLeft: 15, marginTop: 8 }} >
                         <MaterialIcons name={'add-shopping-cart'} size={20} color={'#727272'} />
                     </View>
-                    <CustomTextInput placeholder={'Descrição'}/>
+                    <View style={{ alignItems: "center", padding: 15, flex: 1 }}>
+                        <StyledInput value={description} placeholder={'Descrição'} onChangeText={setDescription} />
+                    </View>
                 </View>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} >
@@ -43,7 +54,9 @@ export default function AddRecipe() {
                 marginBottom: 100,
                 alignItems: 'center',
             }} >
-                <SubmitButton/>
+            <SubmitButton onPress={addNewRecipe} >
+                <MaterialIcons name="done" size={25} color={'#FFF'} />
+            </SubmitButton>
             </View>
         </KeyboardAvoidingView>
     )

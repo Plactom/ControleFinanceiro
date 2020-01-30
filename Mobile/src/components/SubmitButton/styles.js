@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-export const SubmitButtonContainer = styled.TouchableOpacity`
+export const SubmitButton = styled.TouchableOpacity`
     border-radius: 25;
     background-color: #02a229;
     width: 50;
