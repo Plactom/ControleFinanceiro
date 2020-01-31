@@ -2,10 +2,10 @@ const express = require('express')
 const routes = require('./routes')
 const mongoose = require('mongoose')
 const cors = require('cors')
-
 const app = express()
+require('dotenv').config()
 
-mongoose.connect('mongodb+srv://plactom:mdOxj7b53lC5yG7j@cluster0-ntqzv.mongodb.net/ControleFinanceiro?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -16,5 +16,5 @@ app.use(routes)
 
 const port = 7777
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`)
+    console.log(`Server is running on ${port}`)
 })
