@@ -10,5 +10,11 @@ module.exports = {
         })
 
         return res.json(recipe)
+    },
+
+    async index(req, res) {
+        const allRecipes= await Recipe.find()
+
+        return res.json(allRecipes)
     }
 }

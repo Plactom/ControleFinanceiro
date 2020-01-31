@@ -1,38 +1,38 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { RecipeContainer, RecipeValueContainer } from './styles'
 import { Text, View } from 'react-native'
 import AddButton from '../../components/AddButton/index'
+import currencyFormatter from 'currency-formatter'
+import api from '../../services/api'
 
 export default function Recipes({ navigation }) {
+    const [recipes, setRecipes] = useState([])
+
+    useEffect(() => {
+        async function loadRecipes() {
+            const allRecipes = await api.get('/recipes')
+            setRecipes(allRecipes.data)
+        }
+        loadRecipes()
+    }, [])
+
     return(
         <>
-            <RecipeContainer>
-                <Text style={{ paddingLeft: 10 }}>Roupa xyz</Text>
-                <RecipeValueContainer>
-                    <Text style={{ paddingRight: 10 }}>R$20.00</Text>
-                </RecipeValueContainer>
-            </RecipeContainer>
+            {recipes.map( recipe => (
+                <View key={recipe._id}>
+                    <RecipeContainer>
+                        <Text style={{ paddingLeft: 10 }}>
+                            {recipe.description}
+                        </Text>
+                        <RecipeValueContainer>
+                            <Text style={{ paddingRight: 10 }}>
+                                {`${currencyFormatter.format(Number(recipe.value), { locale: 'pt-BR' })}`}
+                            </Text>
+                        </RecipeValueContainer>
+                    </RecipeContainer>
+                </View>
+            ))}
 
-            <RecipeContainer>
-                <Text style={{ paddingLeft: 10 }}>Roupa xyz</Text>
-                <RecipeValueContainer>
-                    <Text style={{ paddingRight: 10 }}>R$20.00</Text>
-                </RecipeValueContainer>
-            </RecipeContainer>
-
-            <RecipeContainer>
-                <Text style={{ paddingLeft: 10 }}>Roupa xyz</Text>
-                <RecipeValueContainer>
-                    <Text style={{ paddingRight: 10 }}>R$20.00</Text>
-                </RecipeValueContainer>
-            </RecipeContainer>
-
-            <RecipeContainer>
-                <Text style={{ paddingLeft: 10 }}>Roupa xyz</Text>
-                <RecipeValueContainer>
-                    <Text style={{ paddingRight: 10 }}>R$20.00</Text>
-                </RecipeValueContainer>
-            </RecipeContainer>
 
             <View style={{ right: 20, bottom: 20, position: "absolute" }} >
                 <AddButton navigate={ () => { navigation.navigate('AddRecipe') }} />

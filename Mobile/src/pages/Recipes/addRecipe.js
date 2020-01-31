@@ -8,7 +8,7 @@ import currencyFormatter from 'currency-formatter'
 
 import api from '../../services/api'
 
-export default function AddRecipe() {
+export default function AddRecipe(props) {
     const [description, setDescription] = useState('')
     const [value, setValue] = useState()
 
@@ -17,6 +17,7 @@ export default function AddRecipe() {
             description,
             value
         })
+        props.navigation.navigate('Recipes')
     }
 
     return(
