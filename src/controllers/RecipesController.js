@@ -5,7 +5,6 @@ module.exports = {
     async store(req, res) {
         const { description, value } = req.body
         const balance = UserController.getBalance()
-        console.log(balance)
 
         let recipe = await Recipe.create({
             description,

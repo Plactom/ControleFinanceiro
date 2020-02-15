@@ -1,17 +1,22 @@
-
+const Recipe = require('../models/Recipe')
 const User = require('../models/User')
 
 module.exports = {
     async getBalance(req, res) {
-        const UserInfos = await User.find()
-        if(UserInfos.length > 0) {
+        const recipes = await Recipe.find()
+        if(recipes.length > 0) {
             try {
-                return res.json(UserInfos[0].balance)
+                let balanceValue = 0
+                for(i = 0; i >= recipes.length; i++) {
+                    balanceValue += i.balance
+                }
+                return res.json({ balance: balanceValue })
             } catch (error) {
                 return res.json({ message: error.message })
             }
         } else {
             return res.json({ balance: 0 })
+            console.log(recipes.length)
         }
 
         
