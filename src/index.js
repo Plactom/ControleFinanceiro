@@ -5,7 +5,7 @@ const cors = require('cors')
 const app = express()
 require('dotenv').config()
 
-mongoose.connect(process.env.MONGO_URL, {
+mongoose.connect(process.env.MONGO_URL , {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
