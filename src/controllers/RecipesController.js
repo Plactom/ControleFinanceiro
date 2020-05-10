@@ -11,37 +11,8 @@ module.exports = {
             value
         })
 
-        let recipeValue = recipe.value
-        let user = await User.find()
+        return res.json(recipe)
 
-        if(user.balance == Number) {
-            const newValue = user.balance += recipeValue
-
-            console.log(user)
-            console.log(recipeValue)
-    
-            const balanceUpdate = await User.updateOne({ _id: user._id }, {
-                $set: {
-                    balance: newValue
-                }
-            })
-            return res.json(newValue)
-        } else {
-            const newValue = recipeValue
-
-            console.log(user)
-            console.log(recipeValue)
-    
-            const balanceUpdate = await User.updateOne({ _id: user._id }, {
-                $set: {
-                    balance: newValue
-                }
-            })
-            return res.json(newValue)
-        }
-
-
-        
     },
 
     async index(req, res) {
