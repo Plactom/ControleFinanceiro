@@ -5,7 +5,7 @@ const AuthController = require('./controllers/AuthController')
 
 const routes = Router()
 
-routes.post('/addrecipe', RecipesController.store)
+routes.post('/addrecipe', RecipesController.addRecipe)
 routes.get('/recipes', RecipesController.index)
 routes.post('/auth/register', AuthController.userRegistration)
 
