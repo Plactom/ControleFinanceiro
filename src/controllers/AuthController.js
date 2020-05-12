@@ -1,4 +1,4 @@
-const User = require('../models/User')
+const { dbUserRegistration } = require('../repositories/AuthRepository')
 const Responses = require('../utils/responses')
 const bcrypt = require('bcrypt')
 const saltRounds = 10
@@ -14,14 +14,22 @@ module.exports = {
                 responses.setError(400, 'Complete todos os campos para cadastrar')
                 responses.send(res)
             } else {
-                const user = await User.create(userRecived)
+                const user = await dbUserRegistration(userRecived)
                 responses.setSuccess(200, 'Cadastrado com sucesso', user)
                 user.password = undefined
                 responses.send(res)
             }
         } catch (error) {
-            console.log(error)
+            throw error
         }
+    },
 
+    async userLogin(req, res) {
+        try {
+            const userRecived = req.body
+            
+        } catch (error) {
+            
+        }
     }
 }
